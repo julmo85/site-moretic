@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MoreTIC — Assistance & Services</title>
+  <meta name="description" content="Assistance informatique, maintenance, cours et conseils — Fr/EN" />
+
+  <!-- hreflang alternates (ajuste l'URL si besoin) -->
+  <link rel="alternate" href="https://moretic.ch/" hreflang="fr" />
+  <link rel="alternate" href="https://moretic.ch/en/" hreflang="en" />
+  <link rel="alternate" href="https://moretic.ch/" hreflang="x-default" />
+
+  <style>
+    :root{
+      --bg:#0b0f14;            /* nuit */
+      --bg-2:#0e1620;          /* nuit + */
+      --ink:#e5f2ff;           /* encre claire */
+      --muted:#a7bed3;         /* texte secondaire */
+      --neon:#00f7ff;          /* cyan néon */
+      --violet:#b084ff;        /* violet rétro */
+      --accent:#63ffa7;        /* vert phospho */
+      --card:#0d141c80;        /* glass */
+      --border:#1f2b3a;        /* bord discret */
+      --max: 1080px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;color:var(--ink);background:radial-gradient(1200px 600px at 50% -10%, #1f2540 0%, transparent 60%),
+      linear-gradient(160deg,var(--bg),var(--bg-2));
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    /* GRILLE rétro au sol */
+    .grid{
+      position:fixed;inset:0;pointer-events:none;opacity:.25;mix-blend-mode:screen;
+      background:
+        linear-gradient(transparent 0 98%, rgba(0,247,255,.5) 99% 100%),
+        linear-gradient(90deg, transparent 0 98%, rgba(176,132,255,.45) 99% 100%);
+      background-size: 100% 48px, 48px 100%;
+      transform: perspective(800px) rotateX(60deg) translateY(35vh);
+      filter: drop-shadow(0 0 12px rgba(0,247,255,.25));
+    }
+    header{
+      position:sticky;top:0;z-index:10;background:linear-gradient(180deg, #0b0f1499 0%, #0b0f1400 100%);
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      max-width:var(--max);margin:0 auto;display:flex;gap:16px;align-items:center;justify-content:space-between;
+      padding:12px 16px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+    .logo{
+      width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+      background: conic-gradient(from 210deg, var(--neon), var(--violet), var(--accent), var(--neon));
+      box-shadow: 0 0 24px #00f7ff55, inset 0 0 18px #000;
+      color:#071015;font-weight:900;font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+    .brand span{font-weight:700;letter-spacing:.3px}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px}
+    nav a:hover{color:var(--ink);background:#ffffff0e}
+    .lang{display:flex;gap:8px}
+    .pill{border:1px solid var(--border);}
+
+    .hero{position:relative;isolation:isolate}
+    .hero .wrap{max-width:var(--max);margin:0 auto;padding:72px 16px 32px}
+    .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:700}
+    h1{margin:8px 0 12px;line-height:1.12;font-size: clamp(32px, 5vw, 56px);}
+    .tagline{font-size: clamp(16px, 2.2vw, 20px);color:var(--muted);max-width:60ch}
+
+    .cta{display:flex;gap:12px;margin-top:22px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;
+      border:1px solid var(--border);text-decoration:none;color:var(--ink);font-weight:600}
+    .btn-primary{
+      background: linear-gradient(90deg, #102a2e, #14182e);
+      border:1px solid #1a3d46; box-shadow: 0 0 16px #00f7ff33;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 10px 24px #00000040}
+
+    .cards{max-width:var(--max);margin:12px auto 40px;padding:0 16px;display:grid;gap:16px;
+      grid-template-columns: repeat(12, 1fr)}
+    .card{grid-column: span 12;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;
+      backdrop-filter: blur(6px)}
+    .card h3{margin:0 0 6px;font-size:20px}
+    .card p{margin:0;color:var(--muted)}
+    @media(min-width:760px){ .card{grid-column: span 6} }
+    @media(min-width:1024px){ .card{grid-column: span 4} }
+
+    .stripe{
+      background: radial-gradient(800px 200px at 50% 0, #00f7ff22, transparent 60%), linear-gradient(180deg,transparent, #0b0f14);
+      border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    }
+
+    .contact{max-width:var(--max);margin:0 auto;padding:28px 16px 64px}
+    .panel{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;display:grid;gap:14px}
+    .panel strong{font-size:18px}
+
+    footer{border-top:1px solid var(--border);margin-top:40px}
+    .foot{max-width:var(--max);margin:0 auto;padding:18px 16px;color:var(--muted);font-size:14px}
+
+    /* Petit effet CRT subtil (rétro) */
+    .crt:before{
+      content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:screen;
+      background: repeating-linear-gradient(0deg, #fff2 0 2px, transparent 2px 4px);
+    }
+  </style>
+</head>
+<body>
+  <div class="grid" aria-hidden="true"></div>
+  <header>
+    <div class="nav">
+      <a class="brand" href="/" aria-label="MoreTIC Accueil">
+        <div class="logo">+C</div>
+        <span>MoreTIC</span>
+      </a>
+      <nav>
+        <a href="/services">Services</a>
+        <a href="/contact">Contact</a>
+        <span class="lang">
+          <a class="pill" href="/">FR</a>
+          <a class="pill" href="/en/">EN</a>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero crt">
+    <div class="wrap">
+      <div class="eyebrow">Assistance · Maintenance · Cours</div>
+      <h1>Informatique claire, <span style="color:var(--neon)">humaine</span>, et durable</h1>
+      <p class="tagline">Dépannage, mise en service, conseils d’achat, formations Windows & Android, à Fribourg et à distance. Un style rétro‑futuriste, mais des solutions très actuelles.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="/contact">Prendre contact</a>
+        <a class="btn" href="/services">Voir les services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cards">
+    <article class="card">
+      <h3>Dépannage & Maintenance</h3>
+      <p>Windows, réseaux, imprimantes, sauvegardes — interventions rapides et pédagogiques.</p>
+    </article>
+    <article class="card">
+      <h3>Mise en route appareils</h3>
+      <p>PC, smartphones, routeurs, TV — installation propre, réglages utiles, sécurité.</p>
+    </article>
+    <article class="card">
+      <h3>Formations & Conseils</h3>
+      <p>Cours 1‑to‑1, méthodes pas‑à‑pas, choix de matériel, sobriété numérique.</p>
+    </article>
+  </section>
+
+  <div class="stripe">
+    <section class="contact">
+      <div class="panel">
+        <strong>Un besoin précis ? On fait simple.</strong>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a class="btn btn-primary" href="mailto:contact@moretic.ch">contact@moretic.ch</a>
+          <a class="btn" href="tel:+41768220051">+41 76 822 00 51</a>
+          <a class="btn" href="/contact">Formulaire</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="foot">© <span id="y"></span> MoreTIC — Fribourg · CH</div>
+  </footer>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
